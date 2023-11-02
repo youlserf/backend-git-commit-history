@@ -1,73 +1,103 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Backend Project Readme
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is the readme for the "backend" project, built using NestJS, a powerful Node.js framework for building scalable and maintainable server-side applications. This project provides an authentication system and an endpoint for making requests to retrieve GitHub commit history.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Prerequisites
 
-## Description
+Before you can run this project, make sure you have the following software installed on your machine:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [Node.js](https://nodejs.org/) (at least version 16)
+- [npm](https://www.npmjs.com/) (usually comes with Node.js installation)
 
 ## Installation
 
-```bash
-$ npm install
-```
+1. Clone the repository to your local machine:
 
-## Running the app
+   ```bash
+   git clone <repository-url>
+   cd backend
+   ```
 
-```bash
-# development
-$ npm run start
+2. Install project dependencies using npm:
 
-# watch mode
-$ npm run start:dev
+   ```bash
+   npm install
+   ```
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
+## Scripts
 
-```bash
-# unit tests
-$ npm run test
+The project includes several scripts to help you with development, linting, testing, and running the application.
 
-# e2e tests
-$ npm run test:e2e
+- **Build**: To build the project, use the following command:
 
-# test coverage
-$ npm run test:cov
-```
+  ```bash
+  npm run build
+  ```
 
-## Support
+  This command transpiles the TypeScript code into JavaScript.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- **Start**: To start the application, use the following command:
 
-## Stay in touch
+  ```bash
+  npm run start
+  ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  This command runs the application in a production environment.
 
-## License
+- **Start (Development)**: To start the application in development mode with watch mode, use:
 
-Nest is [MIT licensed](LICENSE).
+  ```bash
+  npm run start:dev
+  ```
+
+  This is useful for development and will automatically reload the application when code changes are detected.
+
+
+## API Endpoints
+
+The application provides the following API endpoints:
+
+- **Login**:
+
+  - URL: `http://localhost:3031/auth/login`
+  - Method: `POST`
+  - Request Body:
+
+    ```json
+    {
+        "username": "user",
+        "password": "password"
+    }
+    ```
+
+  This endpoint allows users to log in and receive a bearer token.
+
+- **GitHub Commit History**:
+
+  - URL: `http://localhost:3031/github/commit-history/{user}/{name of repository}`
+  - Method: `GET`
+  - Request Headers:
+
+    ```
+    Authorization: Bearer <your-access-token>
+    ```
+
+  This endpoint allows users to retrieve commit history from a GitHub repository. You must include the bearer token received upon logging in.
+
+## Dependencies
+
+The project relies on several dependencies, including:
+
+- NestJS modules for building web applications.
+- Axios for making HTTP requests.
+- Passport and JWT for authentication.
+- Jest for testing.
+
+Make sure to check the `package.json` file for the complete list of dependencies and their versions.
+
+## Feedback and Issues
+
+If you encounter any issues with the project or have feedback, please feel free to [create an issue](https://github.com/your-repository-url/issues) on the project's GitHub repository.
+
+Happy coding!
